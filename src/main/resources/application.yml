@@ -25,3 +25,14 @@ server:
 logging:
   level:
     org.springframework.security: DEBUG
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    url: /v3/api-docs
+    path: /swagger-ui.html
+  packages-to-scan: com.his.heal.controller  # 指定扫描哪些包下的 controller
+  default-flat-param-object: false
