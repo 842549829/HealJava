@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <!-- 定义日志输出格式 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- 控制台输出 appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出 appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每分钟滚动一次 -->
+            <fileNamePattern>logs/app.%d{yyyy-MM-dd_HH-mm}.log</fileNamePattern>
+            <!-- 保留30天的日志 -->
+            <maxHistory>43200</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 设置 root logger 的级别及输出目的地 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- 可选：为特定包设置不同的日志级别 -->
+    <logger name="com.his.heal.controller" level="DEBUG"/>
+    <logger name="com.his.heal.services" level="DEBUG"/>
+
+</configuration>
