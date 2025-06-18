@@ -13,6 +13,9 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  messages:
+    basename: message/messages
+    encoding: UTF-8
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/**/*.xml     # Mapper XML 文件路径（支持子目录）
