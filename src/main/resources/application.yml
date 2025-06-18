@@ -13,8 +13,12 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  messages:
+    basename: message/messages
+    encoding: UTF-8
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/**/*.xml     # Mapper XML 文件路径（支持子目录）
   type-aliases-package: com.his.heal.entity         # 实体类包路径（可选）
 
