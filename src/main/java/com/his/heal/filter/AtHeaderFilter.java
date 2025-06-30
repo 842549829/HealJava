@@ -4,7 +4,6 @@ import com.his.heal.provider.at.contract.AtProvider;
 import com.his.heal.provider.at.imp.DefaultAtProvider;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
