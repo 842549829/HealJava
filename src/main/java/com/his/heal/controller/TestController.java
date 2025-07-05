@@ -25,7 +25,6 @@ public class TestController {
     public  String index(){
         try {
             log.info("<UNK>");
-
             logger.error("错误测试");
 
             var user = userServices.findById("3a194f8d-d797-004e-d3b2-89c6a9684089");
