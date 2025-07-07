@@ -1,9 +1,11 @@
 package com.his.heal.controller;
 
+import com.his.heal.config.CustomJwtConfig;
 import com.his.heal.services.UserServices;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +19,9 @@ public class TestController {
 
     private final UserServices userServices;
 
+    @Autowired
+    private CustomJwtConfig customJwtConfig;
+
     public TestController(UserServices userServices) {
         this.userServices = userServices;
     }
@@ -24,8 +29,8 @@ public class TestController {
     @GetMapping
     public  String index(){
         try {
-            log.info("<UNK>");
-            logger.error("错误测试");
+
+            log.info(customJwtConfig.getJwkSetUri());
 
             var user = userServices.findById("3a194f8d-d797-004e-d3b2-89c6a9684089");
             return user.getUserName();

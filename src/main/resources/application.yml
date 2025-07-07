@@ -40,3 +40,13 @@ springdoc:
     path: /swagger-ui.html
   packages-to-scan: com.his.heal.controller  # 指定扫描哪些包下的 controller
   default-flat-param-object: false
+custom:
+  jwt:
+    jwkSetUri: http://localhost:44364/.well-known/jwks
+    requestMatchers:
+      - /api/v1/test
+      - /api/v1/test/**
+      - /v3/api-docs/**
+      - /swagger-ui/**
+      - /swagger-ui.html
+      - /api/v1/i18n
