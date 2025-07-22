@@ -17,6 +17,10 @@ spring:
   messages:
     basename: message/messages
     encoding: UTF-8
+  data:
+    redis:
+      host: 192.168.5.245
+      prot: 6379
 
 mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/**/*.xml     # Mapper XML 文件路径（支持子目录）
