@@ -21,6 +21,8 @@ spring:
     redis:
       host: 192.168.5.245
       prot: 6379
+    mongodb:
+      uri: mongodb://admin:123456@192.168.28.135:27017/heal?authSource=admin
 
 mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/**/*.xml     # Mapper XML 文件路径（支持子目录）
