@@ -1,5 +1,6 @@
 package com.his.heal.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -30,7 +31,23 @@ public class SecurityConfig {
                         .anyRequest()
                         .authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.decoder(jwtDecoder)));
+                        .jwt(jwt -> jwt.decoder(jwtDecoder))
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            // 检查请求路径是否在白名单中
+                            String path = request.getRequestURI();
+                            if (path.startsWith("/api/v1/test") ||
+                                    path.startsWith("/v3/api-docs") ||
+                                    path.startsWith("/swagger-ui") ||
+                                    path.equals("/api/v1/i18n")) {
+                                // 对于白名单路径，允许请求通过
+                                response.setStatus(HttpServletResponse.SC_OK);
+                            } else {
+                                // 对于其他路径，返回401未授权
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+                            }
+                        })
+                )
+        ;
 
         return http.build();
     }
